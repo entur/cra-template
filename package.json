@@ -1,0 +1,10 @@
+{
+  "name": "@entur/cra-template",
+  "version": "0.1.0",
+  "description": "Entur's template for Create React App",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Entur AS",
+  "license": "MIT"
+}

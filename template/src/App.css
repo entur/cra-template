@@ -1,0 +1,7 @@
+.app {
+  display: flex;
+}
+
+.app-wrapper {
+  margin: var(--space-medium);
+}
