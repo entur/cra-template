@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "description": "Entur's template for Create React App",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier template --write",
+    "test": "prettier template --check"
   },
   "author": "Entur AS",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
 }
