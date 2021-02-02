@@ -2,6 +2,14 @@
     display: flex;
 }
 
-.app-wrapper {
-    margin: var(--space-medium);
+.app-content {
+    margin-left: 26rem;
+    max-width: 60rem;
+    padding: var(--space-medium);
+}
+
+.menu {
+    position: fixed;
+    max-width: 26rem;
+    width: 100%;
 }

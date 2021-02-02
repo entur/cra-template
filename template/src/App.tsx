@@ -20,7 +20,7 @@ const Menu = () => {
     const location = useLocation()
 
     return (
-        <SideNavigation>
+        <SideNavigation className="menu">
             <SideNavigationItem
                 as={Link}
                 to="/"
