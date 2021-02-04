@@ -3,7 +3,7 @@
 A template for creating a new React with some Entur-specific setup.
 
 ```
-npx create-react-app my-awesome-app --template @entur
+npx create-react-app my-awesome-app --use-npm --template @entur
 ```
 
 ## Development
