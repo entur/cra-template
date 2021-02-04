@@ -1,10 +1,11 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 
+import { PrimaryButton } from '@entur/button'
 import { Heading1, Paragraph } from '@entur/typography'
 
 const Profile: React.FC = () => {
-    const { user } = useAuth0()
+    const { user, logout } = useAuth0()
 
     if (!user) {
         return (
@@ -24,6 +25,11 @@ const Profile: React.FC = () => {
             <Paragraph>
                 For å se denne siden må du være innlogget. Og det er du!
             </Paragraph>
+            <PrimaryButton
+                onClick={() => logout({ returnTo: window.location.origin })}
+            >
+                Logg ut
+            </PrimaryButton>
         </div>
     )
 }
