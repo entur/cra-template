@@ -4,6 +4,7 @@ import { Router, Switch, Route, Link, useLocation } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { Auth0Provider, withAuthenticationRequired } from '@auth0/auth0-react'
 
+import { HomeIcon, FileIcon, UserIcon } from '@entur/icons'
 import { SideNavigation, SideNavigationItem } from '@entur/menu'
 
 import Profile from './pages/Profile'
@@ -32,21 +33,21 @@ const Menu = () => {
                 to="/"
                 active={location.pathname === '/'}
             >
-                Hjem
+                <HomeIcon /> Hjem
             </SideNavigationItem>
             <SideNavigationItem
                 as={Link}
                 to="/info"
                 active={location.pathname === '/info'}
             >
-                Informasjon
+                <FileIcon /> Informasjon
             </SideNavigationItem>
             <SideNavigationItem
                 as={Link}
                 to="/profil"
                 active={location.pathname === '/profil'}
             >
-                Profilside
+                <UserIcon /> Profilside
             </SideNavigationItem>
         </SideNavigation>
     )
