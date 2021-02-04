@@ -5,7 +5,7 @@
 .app-content {
     margin-left: 26rem;
     max-width: 60rem;
-    padding: var(--space-medium);
+    padding: var(--space-extra-large);
 }
 
 .menu {

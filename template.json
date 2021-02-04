@@ -1,6 +1,7 @@
 {
   "package": {
     "dependencies": {
+      "@auth0/auth0-react": "^1.2.0",
       "@entur/button": "^2.5.0",
       "@entur/menu": "^3.5.4",
       "@entur/tokens": "^3.0.1",

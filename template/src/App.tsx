@@ -1,20 +1,26 @@
 import React from 'react'
 
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useLocation,
-} from 'react-router-dom'
+import { Router, Switch, Route, Link, useLocation } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
+import { Auth0Provider, withAuthenticationRequired } from '@auth0/auth0-react'
 
 import { SideNavigation, SideNavigationItem } from '@entur/menu'
 
-import Help from './pages/Help'
+import Profile from './pages/Profile'
 import Home from './pages/Home'
 import Info from './pages/Info'
 
 import './App.css'
+
+export const history = createBrowserHistory()
+
+const ProtectedRoute = ({ component, ...args }: any) => (
+    <Route component={withAuthenticationRequired(component)} {...args} />
+)
+
+const onRedirectCallback = (appState: any): void => {
+    history.replace(appState?.returnTo || window.location.pathname)
+}
 
 const Menu = () => {
     const location = useLocation()
@@ -37,10 +43,10 @@ const Menu = () => {
             </SideNavigationItem>
             <SideNavigationItem
                 as={Link}
-                to="/hjelp"
-                active={location.pathname === '/hjelp'}
+                to="/profil"
+                active={location.pathname === '/profil'}
             >
-                Hjelp
+                Profilside
             </SideNavigationItem>
         </SideNavigation>
     )
@@ -48,24 +54,35 @@ const Menu = () => {
 
 function App() {
     return (
-        <Router>
-            <div className="app">
-                <Menu />
-                <div className="app-wrapper">
-                    <Switch>
-                        <Route path="/info">
-                            <Info />
-                        </Route>
-                        <Route path="/hjelp">
-                            <Help />
-                        </Route>
-                        <Route path="/">
-                            <Home />
-                        </Route>
-                    </Switch>
+        <Auth0Provider
+            domain="<DOMAIN>"
+            clientId="<CLIENT_ID>"
+            audience="<AUDIENCE>"
+            redirectUri={window.location.origin + '<RELATIVE_CALLBACK_URL>'}
+            cacheLocation="localstorage"
+            useRefreshTokens
+            onRedirectCallback={onRedirectCallback}
+        >
+            <Router history={history}>
+                <div className="app">
+                    <Menu />
+                    <div className="app-content">
+                        <Switch>
+                            <Route path="/info">
+                                <Info />
+                            </Route>
+                            <ProtectedRoute
+                                path="/profil"
+                                component={Profile}
+                            />
+                            <Route path="/">
+                                <Home />
+                            </Route>
+                        </Switch>
+                    </div>
                 </div>
-            </div>
-        </Router>
+            </Router>
+        </Auth0Provider>
     )
 }
 
