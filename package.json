@@ -1,6 +1,6 @@
 {
   "name": "@entur/cra-template",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Entur's template for Create React App",
   "scripts": {
     "format": "prettier template --write",
